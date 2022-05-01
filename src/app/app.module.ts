@@ -12,8 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    InputTextModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
