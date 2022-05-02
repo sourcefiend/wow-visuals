@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InputTextModule } from 'primeng/inputtext';
+import { LayoutModule } from './modules/layout/layout.module';
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import { InputTextModule } from 'primeng/inputtext';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
