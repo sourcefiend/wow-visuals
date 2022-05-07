@@ -13,26 +13,41 @@ export class MenuComponent implements OnInit {
     ngOnInit() {
         this.items = [
             {
-                label: 'File',
-                items: [{
-                        label: 'New', 
-                        icon: 'pi pi-fw pi-plus',
-                        items: [
-                            {label: 'Project'},
-                            {label: 'Other'},
-                        ]
-                    },
-                    {label: 'Open'},
-                    {label: 'Quit'}
+                label: 'Overview',
+            },
+            {
+                label: 'Achievements',
+                items: [
+                    {label: 'Character'},
+                    {label: 'Quests'},
+                    {label: 'Exploration'},
+                    {label: 'Player vs. Player'},
+                    {label: 'Dungeons & Raids'},
+                    {label: 'Professions'},
+                    {label: 'Reputation'},
+                    {label: 'World Events'},
+                    {label: 'Pet Battles'},
+                    {label: 'Collections'},
+                    {label: 'Expansion Features'},
+                    {label: 'Legacy'},
+                    {label: 'Feats of Strength'}
                 ]
             },
             {
-                label: 'Edit',
-                icon: 'pi pi-fw pi-pencil',
+                label: 'Collectable',
                 items: [
-                    {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-                    {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
+                    { label: 'Mounts'},
+                    { label: 'Companions'},
+                    { label: 'Battle Pets'},
+                    { label: 'Toys'},
+                    { label: 'Titles'}
                 ]
+            },
+            {
+                label: 'Calendar'
+            },
+            {
+                label: 'Reputation'
             }
         ];
     }
