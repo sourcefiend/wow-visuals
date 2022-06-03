@@ -10,6 +10,8 @@ export class MenuComponent implements OnInit {
 
   items!: MenuItem[];
 
+  login: String = "Gigarogue@Kazzak"
+
     ngOnInit() {
         this.items = [
             {

@@ -6,6 +6,8 @@ import { FullComponent } from './full/full.component';
 import { MenuComponent } from './menu/menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MenubarModule } from 'primeng/menubar';
+import { InputTextModule } from 'primeng/inputtext'
+import { SharedModule } from 'primeng/api';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { MenubarModule } from 'primeng/menubar';
     CommonModule,
     LayoutRoutingModule,
     MenubarModule,
+    InputTextModule,
+    SharedModule
   ]
 })
 export class LayoutModule { }
