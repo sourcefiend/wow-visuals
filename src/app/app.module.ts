@@ -7,6 +7,7 @@ import { CoreModule } from './modules/core/core.module';
 import { LayoutModule } from './modules/layout/layout.module';
 import { LoginModule } from './modules/login/login.module';
 import { SharedModule } from './modules/shared/shared.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from './modules/shared/shared.module';
     LayoutModule,
     LoginModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

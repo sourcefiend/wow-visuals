@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { InputTextModule } from 'primeng/inputtext';
   imports: [
     CommonModule,
     AutoCompleteModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule
   ]
 })
 export class LoginModule { }

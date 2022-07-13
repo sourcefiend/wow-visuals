@@ -14,7 +14,7 @@ export class RealmService {
     private adapter: RealmAdapter
   ) { }
 
-  getUSRealms() {
+  getUSRealms(): Observable<Realm[]> {
     const usRealmsURL = 'https://us.api.blizzard.com/data/wow/realm/index';
 
     const usRealmsOptions = {
@@ -28,12 +28,13 @@ export class RealmService {
         .set('locale', 'en_US')
     }
 
-    this.http.get(usRealmsURL, usRealmsOptions).subscribe(result => {
-      console.log(result);
-    })
+    return this.http.get<Realm[]>(usRealmsURL, usRealmsOptions)
+      .pipe(
+        map((data: any) => data.realms)
+      );
   }
 
-  getEURealms() {
+  getEURealms(): Observable<Realm[]> {
     const euRealmsURL = 'https://eu.api.blizzard.com/data/wow/realm/index';
 
     const euRealmsOptions = {
@@ -45,8 +46,10 @@ export class RealmService {
         .set('namespace', 'dynamic-eu')
         .set('locale', 'en_US')
     }
-    this.http.get(euRealmsURL, euRealmsOptions).subscribe(result => {
-      console.log(result);
-    })
+    
+    return this.http.get<Realm[]>(euRealmsURL, euRealmsOptions)
+      .pipe(
+        map((data: any) => data.realms)
+      );
   }
 }
