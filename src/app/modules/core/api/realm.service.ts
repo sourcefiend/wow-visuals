@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Realm, RealmAdapter } from '../../shared/models/realm.model';
+import { Realm } from '../../shared/models/realm.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,7 @@ import { Realm, RealmAdapter } from '../../shared/models/realm.model';
 export class RealmService {
 
   constructor(
-    private http: HttpClient,
-    private adapter: RealmAdapter
+    private http: HttpClient
   ) { }
 
   getUSRealms(): Observable<Realm[]> {
@@ -20,7 +19,7 @@ export class RealmService {
     const usRealmsOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('oauth_access_token_us') as string)
+        'Authorization': 'Bearer ' + localStorage.getItem('oauth_access_token_us')
       }),
       params: new HttpParams()
         .set('region', 'us')
@@ -39,7 +38,7 @@ export class RealmService {
 
     const euRealmsOptions = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('oauth_access_token_eu') as string)
+        'Authorization': 'Bearer ' + localStorage.getItem('oauth_access_token_eu')
       }),
       params: new HttpParams()
         .set('region', 'eu')

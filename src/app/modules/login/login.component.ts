@@ -5,6 +5,8 @@ import { RealmService } from '../core/api/realm.service';
 import { AuthService } from '../core/guard/auth.service';
 import { Realm } from '../shared/models/realm.model';
 import { sortByName } from '../../utils/utils';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Login } from '../shared/models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,12 @@ export class LoginComponent implements OnInit {
   groupedRealms!: SelectItemGroup[];
   filteredRealms!: any[];
 
-  selectedRealm!: string;
+  model!: Login;
+
+  loginForm = new FormGroup({
+    realm: new FormControl('', Validators.required),
+    characterName: new FormControl('', Validators.required)
+  })
 
   constructor(
     private realmService: RealmService,
@@ -28,7 +35,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.authService.getOAuthTokens();
+    this.authService.clearTokens();
+    await this.authService.getEUOAuthToken();
+    await this.authService.getUSOAuthToken();
     this.euRealms = await firstValueFrom(this.realmService.getEURealms());
     this.usRealms = await firstValueFrom(this.realmService.getUSRealms());
 
@@ -36,13 +45,13 @@ export class LoginComponent implements OnInit {
       {
         label: 'EU', value: 'eu',
         items: this.euRealms.map(realm => {
-          return {label: realm.name, value: realm.name}
+          return {label: 'EU', value: realm.name}
         }).sort(sortByName)
       },
       {
         label: 'US', value: 'us',
         items: this.usRealms.map(realm => {
-          return {label: realm.name, value: realm.name}
+          return {label: 'US', value: realm.name}
         }).sort(sortByName)
       }
     ]
@@ -55,7 +64,7 @@ export class LoginComponent implements OnInit {
     for (let optgroup of this.groupedRealms) {
       let filteredSubOptions = this.filterService.filter(
         optgroup.items,
-        ["label"],
+        ["value"],
         query,
         "contains"
       );
@@ -70,5 +79,16 @@ export class LoginComponent implements OnInit {
 
     this.filteredRealms = filteredRealms.sort(sortByName);
   }
+
+  login() {
+    const model: Login = new Login(
+      this.loginForm.controls['realm'].value.label,
+      this.loginForm.controls['realm'].value.value,
+      this.loginForm.controls['characterName'].value
+    );
+    this.authService.login(model);
+  }
+
+  //TODO: fixat da kad se klikne van realm dropdowna vrijednost unutra ostane neresetirana
 
 }

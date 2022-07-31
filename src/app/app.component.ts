@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './modules/core/guard/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'wow-visuals';
 
-  ngOnInit(): void {
+  constructor(
+    private authService: AuthService
+  ) {
     
+  }
+  ngOnInit(): void {
+    // this.authService.clearTokens();
   }
 }

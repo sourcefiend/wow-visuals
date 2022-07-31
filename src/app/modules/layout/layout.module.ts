@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext'
 import { SharedModule } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SharedModule } from 'primeng/api';
     LayoutRoutingModule,
     MenubarModule,
     InputTextModule,
-    SharedModule
+    SharedModule,
+    ButtonModule
   ]
 })
 export class LayoutModule { }

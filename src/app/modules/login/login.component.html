@@ -1,25 +1,28 @@
 <div class="flex justify-content-center align-items-center h-full">
-    <div class="card">
-        <div class="field">
-            <span class="p-float-label">
-                <p-autoComplete inputId="realm-list" field="label"
-                    [(ngModel)]="selectedRealm" [suggestions]="filteredRealms" [dropdown]="true"
-                    [group]="true" (completeMethod)="filterGroupedRealms($event)">
-                    <ng-template let-group pTemplate="group">
-                        <div class="p-d-flex p-ai-center">
-                            <span>{{group.label}}</span>
-                        </div>
-                    </ng-template>
-                </p-autoComplete>
-                <label for="realm-list">Realm</label>
-            </span>
+    <form [formGroup]="loginForm">
+        <div class="card">
+            <div class="field">
+                <span class="p-float-label">
+                    <p-autoComplete inputId="realm-list" field="value" formControlName="realm"
+                        [suggestions]="filteredRealms" [dropdown]="true"
+                        [group]="true" (completeMethod)="filterGroupedRealms($event)">
+                        <ng-template let-group pTemplate="group">
+                            <div class="p-d-flex p-ai-center">
+                                <span>{{group.value}}</span>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
+                    <label for="realm-list">Realm</label>
+                </span>
+            </div>
+            <div class="field">
+                <span class="p-float-label">
+                    <input type="character-name" formControlName="characterName" pInputText>
+                    <label for="character-name">Character name</label>
+                </span>
+            </div>
+            <button pButton type="submit" label="Login" (click)="login()"></button>
         </div>
-        <div class="field">
-            <span class="p-float-label">
-                <input type="character-name" pInputText>
-                <label for="character-name">Character name</label>
-            </span>
-        </div>
-    </div>
+    </form>
 </div>
 

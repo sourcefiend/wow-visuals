@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { CharacterMediaService } from '../../core/api/character-media.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  heroBannerUrl!: string
 
-  ngOnInit(): void {
+  constructor(
+    private characterMediaService: CharacterMediaService
+  ) { }
+
+  async ngOnInit() {
+    this.heroBannerUrl = await firstValueFrom(this.characterMediaService.getCharacterRender());
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../core/guard/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,11 +9,25 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuComponent implements OnInit {
 
-  items!: MenuItem[];
+    items!: MenuItem[];
 
-  login: String = "Gigarogue@Kazzak"
+    loginString!: String;
+
+    constructor(
+        private authService: AuthService
+    ) {
+    }
 
     ngOnInit() {
+        this.initializeMenu();
+        this.loginString = `${localStorage.getItem('characterName')}@${localStorage.getItem('realm')}`;
+    }
+
+    logout() {
+        this.authService.logout();
+    }
+
+    private initializeMenu() {
         this.items = [
             {
                 label: 'Overview',
@@ -38,7 +53,7 @@ export class MenuComponent implements OnInit {
             {
                 label: 'Collectable',
                 items: [
-                    { label: 'Mounts'},
+                    { label: 'Mounts', routerLink: 'mounts' },
                     { label: 'Companions'},
                     { label: 'Battle Pets'},
                     { label: 'Toys'},
@@ -53,5 +68,4 @@ export class MenuComponent implements OnInit {
             }
         ];
     }
-
 }

@@ -4,6 +4,9 @@
         <img src="../../../../assets/wowicon.svg" alt="WoW logo" height="40" class="ml-2 mr-2">
     </ng-template>
     <ng-template pTemplate="end">
-        
+        <div class="login-info">
+            <p>Logged in as: <strong>{{loginString}}</strong></p>
+            <button pButton type="button" label="Logout" icon="pi pi-user" (click)="logout()"></button>
+        </div>
     </ng-template>
 </p-menubar>

@@ -7,7 +7,9 @@ import { CoreModule } from './modules/core/core.module';
 import { LayoutModule } from './modules/layout/layout.module';
 import { LoginModule } from './modules/login/login.module';
 import { SharedModule } from './modules/shared/shared.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiInterceptorProviders } from './modules/core/interceptors/interceptors';
 
 
 @NgModule({
@@ -21,9 +23,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     LoginModule,
     CoreModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ApiInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
