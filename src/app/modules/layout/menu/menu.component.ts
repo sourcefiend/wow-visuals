@@ -64,7 +64,10 @@ export class MenuComponent implements OnInit {
                 label: 'Calendar'
             },
             {
-                label: 'Reputation'
+                label: 'Reputation', routerLink: 'reputation'
+            },
+            {
+                label: 'Mythic+', routerLink: 'mythic-plus'
             }
         ];
     }

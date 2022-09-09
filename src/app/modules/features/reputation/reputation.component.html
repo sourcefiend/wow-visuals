@@ -1,0 +1,9 @@
+<div class="reputations" *ngFor="let reputation of reputations">
+    <h2 [className]="'color-' + reputation.tier.toString()">{{reputation.name + ' - ' + reputation.tierName}}</h2>
+    <div>
+        <p-progressBar [className]="'color-' + reputation.tier.toString()" [value]="reputation | reputationProgress"></p-progressBar>
+        <strong>
+            <p style="display: inline-block;">{{reputation.currentPoints + ' / ' + reputation.maximumPoints}}</p>
+        </strong>
+    </div>
+</div>

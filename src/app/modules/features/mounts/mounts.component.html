@@ -1,1 +1,14 @@
-<p>mounts works!</p>
+<p-dataView #dv [value]="mounts" [layout]="'grid'" [paginator]="true" [rows]="12" (onPage)="onPage($event)" (onSort)="onSort($event)" filterBy="name">
+    <ng-template pTemplate="header">
+        <span class="p-input-icon-left p-mb-2 p-bm-md-0">
+            <i class="pi pi-search"></i>
+            <input type="search" pInputText placeholder="Search by mount name"
+                (input)="dv.filter($any($event.target).value, 'contains')">
+        </span>
+    </ng-template>
+    <ng-template let-mount pTemplate="gridItem">
+        <div class="col-12 md:col-4">
+            {{mount.name}}
+        </div>
+    </ng-template>
+</p-dataView>

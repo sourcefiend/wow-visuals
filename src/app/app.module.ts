@@ -10,6 +10,8 @@ import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiInterceptorProviders } from './modules/core/interceptors/interceptors';
+import { CommonModule } from '@angular/common';
+import { FeaturesModule } from './modules/features/features.module';
 
 
 @NgModule({
@@ -18,13 +20,15 @@ import { ApiInterceptorProviders } from './modules/core/interceptors/interceptor
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     LayoutModule,
     LoginModule,
     CoreModule,
     SharedModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FeaturesModule
   ],
   providers: [
     ApiInterceptorProviders
