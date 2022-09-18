@@ -1,4 +1,4 @@
-<p-dataView #dv [value]="mounts" [layout]="'grid'" [paginator]="true" [rows]="12" (onPage)="onPage($event)" (onSort)="onSort($event)" filterBy="name">
+<p-dataView #dv [value]="mounts" [layout]="'grid'" [paginator]="true" [rows]="9" (onPage)="onPage($event)" (onSort)="onSort($event)" filterBy="name" class="mount-dataview">
     <ng-template pTemplate="header">
         <span class="p-input-icon-left p-mb-2 p-bm-md-0">
             <i class="pi pi-search"></i>
@@ -8,7 +8,9 @@
     </ng-template>
     <ng-template let-mount pTemplate="gridItem">
         <div class="col-12 md:col-4">
-            {{mount.name}}
+            <h1>{{mount.name}}</h1>
+            <br>
+            <img src="{{displayMap.get(mount.name)}}" alt="" width="300" class="mount-image">
         </div>
     </ng-template>
 </p-dataView>

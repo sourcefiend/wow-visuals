@@ -11,3 +11,19 @@ export class Mount {
         this.mount_href = mount_href;
     }
 }
+
+export class MountDisplay {
+    id: number;
+    name: string;
+    displayId: number;
+    description: string;
+    source: string;
+
+    constructor(id: number, name: string, displayId: number, description: string, source: string) {
+        this.id = id;
+        this.name = name;
+        this.displayId = displayId;
+        this.description = description;
+        this.source = source;
+    }
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { MountService } from '../../core/api/mount.service';
-import { Mount } from '../../shared/models/mount.model';
+import { Mount, MountDisplay } from '../../shared/models/mount.model';
 
 @Component({
   selector: 'app-mounts',
@@ -12,6 +12,10 @@ export class MountsComponent implements OnInit {
 
   public mounts!: Mount[];
 
+  public mountDisplays: MountDisplay[] = [];
+
+  public displayMap = new Map<String, String>();
+
   public totalRecords!: number;
 
   constructor(
@@ -20,7 +24,12 @@ export class MountsComponent implements OnInit {
 
   async ngOnInit() {
     this.mounts = await firstValueFrom(this.service.getMounts());
-    // this.mounts = await firstValueFrom(this.service.fillMountArrayWithRenders(this.mounts));
+    this.mounts.forEach(async mount => {
+      const mountDisplay = await firstValueFrom(this.service.getSpecificMount(mount.id))
+      this.mountDisplays.push(mountDisplay);
+      this.displayMap.set(mountDisplay.name, `https://render.worldofwarcraft.com/us/npcs/zoom/creature-display-${mountDisplay.displayId}.jpg`);
+    });
+    console.log(this.mountDisplays);
   }
 
   onPage(event: any) {

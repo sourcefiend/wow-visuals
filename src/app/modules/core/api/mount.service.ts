@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { Mount } from '../../shared/models/mount.model';
+import { Mount, MountDisplay } from '../../shared/models/mount.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,35 +33,24 @@ export class MountService {
       )
   }
 
-  // async fillMountArrayWithRenders(mounts: Mount[]) {
+  getSpecificMount(mountId: Number) {
+    const specificMountURL = `https://${localStorage.getItem('region')}.api.blizzard.com/data/wow/mount/${mountId}`;
 
-  //   let mountsWithRenders = [];
+    const specificMountOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem(`oauth_access_token_${localStorage.getItem('region')}`)
+      }),
+      params: new HttpParams()
+        .set('locale', 'en_US')
+        .set('namespace', `static-${localStorage.getItem('region')}`)
+    }
 
-  //   const mountOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer ' + localStorage.getItem(`oauth_access_token_${localStorage.getItem('region')}`)
-  //     }),
-  //     params: new HttpParams()
-  //       .set('locale', 'en_US')
-  //       .set('namespace', `static-${localStorage.getItem('region')}`)
-  //   }
-
-  //   for (let mount of mounts) {
-  //     const mountURL = `https://${localStorage.getItem('region')}.api.blizzard.com/data/wow/mount/${mount.id}`;
-
-  //     let mountWithRender = await this.http.get(mountURL, mountOptions)
-  //       .pipe(
-  //         map((item: any) => {
-  //           mount.description = item.description;
-  //           mount.display_url = (item.creature_displays as any[]).shift().key.href;
-  //           return mount;
-  //         })
-  //       );
-
-  //     mountsWithRenders.push(mountWithRender)
-  //   }
-
-  //   return mountsWithRenders;
-  // }
+    return this.http.get(specificMountURL, specificMountOptions)
+      .pipe(
+        map((item: any) => 
+          new MountDisplay(item.id, item.name, (item.creature_displays as any[]).pop().id, item.description, item.source)
+        ),
+      )
+  }
 }

@@ -12,3 +12,7 @@ export const dungeons = new Map<String, String>(
         ["Sanguine Depths", "https://render.worldofwarcraft.com/us/zones/sanguine-depths-small.jpg"],
     ]
 );
+
+export const mount_displays = new Map<String, String>([
+    ['', '']
+]);

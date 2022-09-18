@@ -13,10 +13,7 @@ export class DungeonService {
   ) { }
 
   getDungeonData() {
-    const dungeonsURL = `https://
-    ${localStorage.getItem('region')}.api.blizzard.com/profile/wow/character/
-    ${localStorage.getItem('realm')}/
-    ${localStorage.getItem('characterName')}/mythic-keystone-profile/season/7`
+    const dungeonsURL = `https://${localStorage.getItem('region')}.api.blizzard.com/profile/wow/character/${localStorage.getItem('realm')}/${localStorage.getItem('characterName')}/mythic-keystone-profile/season/7`
 
     const dungeonsOptions = {
       headers: new HttpHeaders({
