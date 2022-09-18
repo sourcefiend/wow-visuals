@@ -15,6 +15,7 @@ export class MountsComponent implements OnInit {
   public mountDisplays: MountDisplay[] = [];
 
   public displayMap = new Map<String, String>();
+  public descriptionMap = new Map<String, String>();
 
   public totalRecords!: number;
 
@@ -28,6 +29,7 @@ export class MountsComponent implements OnInit {
       const mountDisplay = await firstValueFrom(this.service.getSpecificMount(mount.id))
       this.mountDisplays.push(mountDisplay);
       this.displayMap.set(mountDisplay.name, `https://render.worldofwarcraft.com/us/npcs/zoom/creature-display-${mountDisplay.displayId}.jpg`);
+      this.descriptionMap.set(mountDisplay.name, mountDisplay.description)
     });
     console.log(this.mountDisplays);
   }
