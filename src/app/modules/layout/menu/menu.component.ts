@@ -33,35 +33,11 @@ export class MenuComponent implements OnInit {
                 label: 'Overview',
             },
             {
-                label: 'Achievements',
-                items: [
-                    {label: 'Character'},
-                    {label: 'Quests'},
-                    {label: 'Exploration'},
-                    {label: 'Player vs. Player'},
-                    {label: 'Dungeons & Raids'},
-                    {label: 'Professions'},
-                    {label: 'Reputation'},
-                    {label: 'World Events'},
-                    {label: 'Pet Battles'},
-                    {label: 'Collections'},
-                    {label: 'Expansion Features'},
-                    {label: 'Legacy'},
-                    {label: 'Feats of Strength'}
-                ]
-            },
-            {
                 label: 'Collectable',
                 items: [
                     { label: 'Mounts', routerLink: 'mounts' },
-                    { label: 'Companions'},
-                    { label: 'Battle Pets'},
-                    { label: 'Toys'},
                     { label: 'Titles'}
                 ]
-            },
-            {
-                label: 'Calendar'
             },
             {
                 label: 'Reputation', routerLink: 'reputation'
