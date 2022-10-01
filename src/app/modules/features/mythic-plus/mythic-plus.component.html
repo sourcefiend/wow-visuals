@@ -1,12 +1,12 @@
 <h1 style="text-align: center;">Best dungeon runs for current season:</h1>
 <p-divider></p-divider>
 <div class="container">
-    <p-card *ngFor="let dungeon of dungeons" class="container-item">
+    <p-card *ngFor="let dungeon of dungeons" class="container-item shadow-8">
         <ng-template pTemplate="header">
-            <img src="{{dungeonMap.get(dungeon.name)}}" alt="Bla">
+            <img src="{{dungeonMap.get(dungeon.name)}}" class="dungeon-banner">
         </ng-template>
         <ng-template pTemplate="title">
-            <em><strong>{{dungeon.name}}</strong></em>
+            <em><strong class="dungeon-name">{{dungeon.name}}</strong></em>
             <p-divider></p-divider>
         </ng-template>
         <ng-template pTemplate="subtitle">
