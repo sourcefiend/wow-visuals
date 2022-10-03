@@ -18,3 +18,7 @@
     font-size: 0.8rem;
     max-width: 400px;
 }
+
+:host ::ng-deep .p-dataview-header {
+    margin-bottom: 10px;
+}
