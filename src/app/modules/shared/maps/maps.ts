@@ -13,6 +13,18 @@ export const dungeons = new Map<String, String>(
     ]
 );
 
-export const mount_displays = new Map<String, String>([
-    ['', '']
-]);
+export const factions = new Map<String, String>(
+  [
+    ["Alliance", "https://assets.worldofwarcraft.com/static/components/Logo/Logo-alliance.bb36e70f5f690a5fc510ed03e80aa259.png"],
+    ["Horde", "https://assets.worldofwarcraft.com/static/components/Logo/Logo-horde.2a80e0466e51d85c8cf60336e16fe8b8.png"]
+  ]  
+);
+
+export const covenants = new Map<String, String>(
+    [
+      ["Venthyr", "https://assets.worldofwarcraft.com/static/components/GameIcon/ui_sigil_venthyr_circle.6a35b60c9d1f6ca79589d67d525f81c5.png"],
+      ["Necrolord", "https://assets.worldofwarcraft.com/static/components/GameIcon/ui_sigil_necrolord_circle.544393be074d777317183f5600d62e1b.png"],
+      ["Kyrian", "https://assets.worldofwarcraft.com/static/components/GameIcon/ui_sigil_kyrian_circle.7209662c3591446a26461e3db2647897.png"],
+      ["Night Fae", "https://assets.worldofwarcraft.com/static/components/GameIcon/ui_sigil_nightfae_circle.5872605a69525dd684ae070a78f384bd.png"]
+    ]  
+  );

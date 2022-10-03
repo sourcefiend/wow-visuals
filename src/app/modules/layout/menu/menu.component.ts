@@ -30,14 +30,10 @@ export class MenuComponent implements OnInit {
     private initializeMenu() {
         this.items = [
             {
-                label: 'Overview',
+                label: 'Overview', routerLink: 'overview'
             },
             {
-                label: 'Collectable',
-                items: [
-                    { label: 'Mounts', routerLink: 'mounts' },
-                    { label: 'Titles'}
-                ]
+                label: 'Mounts', routerLink: 'mounts'
             },
             {
                 label: 'Reputation', routerLink: 'reputation'

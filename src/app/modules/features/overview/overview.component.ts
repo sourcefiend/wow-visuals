@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { OverviewService } from '../../core/api/overview.service';
+import { covenants, factions } from '../../shared/maps/maps';
+import { Overview } from '../../shared/models/overview.model';
 
 @Component({
   selector: 'app-overview',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
+  public overview!: Overview;
+  public factionMap: Map<String, String> = factions;
+  public covenantMap: Map<String, String> = covenants;
 
-  ngOnInit(): void {
+  constructor(
+    private service: OverviewService
+  ) { }
+
+  async ngOnInit() {
+    this.overview = await firstValueFrom(this.service.getOverview());
   }
 
 }

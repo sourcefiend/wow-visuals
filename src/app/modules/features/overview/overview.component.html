@@ -1,1 +1,27 @@
-<p>overview works!</p>
+<h1 style="text-align: center;">Character overview</h1>
+<p-divider></p-divider>
+<div class="player-info">
+    <h2>{{overview.name + ', ' + overview.activeTitle}}</h2>
+    <div class="faction-info">
+        <h3>{{'Realm: ' + overview.realm}}</h3>
+        <div>
+            <h3>{{'Faction: ' + overview.faction}}</h3>
+            <img src="{{factionMap.get(overview.faction)}}" width="100">
+        </div>
+    </div>
+    <div class="covenant-info">
+        <div>
+            <h3>{{'Covenant: ' + overview.covenant}}</h3>
+            <img src="{{covenantMap.get(overview.covenant)}}" width="50">
+            <h3>{{'Renown: ' + overview.renown}}</h3>
+        </div>
+    </div>
+    <div style="align-self:flex-start">
+        <h3>{{'Race: ' + overview.race}}</h3>
+        <h3>{{'Class: ' + overview.characterClass}}</h3>
+        <h3>{{'Current talent specialization: ' + overview.activeSpec}}</h3>
+        <h3>{{'Level: ' + overview.level}}</h3>
+        <h3>{{'Equipped item level: ' + overview.itemLevel}}</h3>
+    </div>
+    <h3>{{'Achievement points earned: ' + overview.achievementPoints}}</h3>
+</div>

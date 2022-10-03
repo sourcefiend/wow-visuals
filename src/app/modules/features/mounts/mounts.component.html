@@ -7,11 +7,11 @@
         </span>
     </ng-template>
     <ng-template let-mount pTemplate="gridItem">
-        <div class="col-12 md:col-4">
-            <h1>{{mount.name}}</h1>
+        <div class="col-12 md:col-4 mount-card">
+            <h2>{{mount.name}}</h2>
             <br>
-            <img src="{{displayMap.get(mount.name)}}" alt="" width="300" class="mount-image">
-            <p>{{descriptionMap.get(mount.name)}}</p>
+            <img src="{{displayMap.get(mount.name)}}" alt="" width="200" class="mount-image">
+            <p class="mount-desc">{{descriptionMap.get(mount.name)}}</p>
         </div>
     </ng-template>
 </p-dataView>
